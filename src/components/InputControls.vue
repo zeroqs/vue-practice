@@ -13,10 +13,10 @@ const emit = defineEmits(['addTodo', 'update:modelValue'])
   <div class="inputs">
     <InputText
       :value="modelValue"
-      @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
       type="text"
+      @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
     />
-    <Button @click="emit('addTodo')" size="small">add</Button>
+    <Button size="small" @click="emit('addTodo')">add</Button>
   </div>
 </template>
 

@@ -10,7 +10,7 @@ const { inputValue, removeTodo, filteredTodos, addTodo, showCompleted } = useTod
 <template>
   <InputControls v-model="inputValue" @add-todo="addTodo" />
   <FilterControls @set-filter-todo="(filters: boolean) => (showCompleted = filters)" />
-  <TodoList @delete-todo="removeTodo" :filtered-todos="filteredTodos" />
+  <TodoList :filtered-todos="filteredTodos" @delete-todo="removeTodo" />
 </template>
 
 <style scoped></style>

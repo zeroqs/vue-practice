@@ -28,7 +28,7 @@ const emit = defineEmits(['deleteTodo'])
         </template>
         <template #footer>
           <div class="footer">
-            <Button @click="emit('deleteTodo', todo.id)" severity="danger">delete</Button>
+            <Button severity="danger" @click="emit('deleteTodo', todo.id)">delete</Button>
             <Checkbox v-model="todo.complete" :binary="true" />
           </div>
         </template>
