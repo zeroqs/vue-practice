@@ -1,16 +1,23 @@
-<script setup lang="ts">
-import TodoList from '@/components/TodoList.vue'
-import FilterControls from '@/components/FilterControls.vue'
-import InputControls from '@/components/InputControls.vue'
-import { useTodos } from '@/utils/useTodos'
-
-const { inputValue, removeTodo, filteredTodos, addTodo, showCompleted } = useTodos()
-</script>
-
+<script setup lang="ts"></script>
 <template>
-  <InputControls v-model="inputValue" @add-todo="addTodo" />
-  <FilterControls @set-filter-todo="(filters: boolean) => (showCompleted = filters)" />
-  <TodoList :filtered-todos="filteredTodos" @delete-todo="removeTodo" />
+  <router-view v-slot="{ Component }">
+    <transition name="slide" mode="out-in">
+      <component :is="Component" :key="$route.path" />
+    </transition>
+  </router-view>
 </template>
 
-<style scoped></style>
+<style>
+.slide-enter-active,
+.slide-leave-active {
+  transition:
+    opacity 1s,
+    transform 1s;
+}
+
+.slide-enter-from,
+.slide-leave-to {
+  opacity: 0;
+  transform: translateX(-30%);
+}
+</style>

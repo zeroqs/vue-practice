@@ -2,7 +2,7 @@
 import Card from 'primevue/card'
 import Button from 'primevue/button'
 import Checkbox from 'primevue/checkbox'
-import type { Todo } from '@/utils/useTodos'
+import type { Todo } from '@/store/todo/todoStore'
 
 defineProps<{
   filteredTodos: Todo[]
@@ -17,7 +17,7 @@ const emit = defineEmits(['deleteTodo'])
   </template>
   <ul class="cards">
     <li v-for="todo in filteredTodos" :key="todo.id">
-      <Card style="width: 25em">
+      <Card class="card">
         <template #title
           ><span :class="{ title: todo.complete }">Todo number {{ todo.id + 1 }}</span></template
         >
@@ -29,7 +29,7 @@ const emit = defineEmits(['deleteTodo'])
         <template #footer>
           <div class="footer">
             <Button severity="danger" @click="emit('deleteTodo', todo.id)">delete</Button>
-            <Checkbox v-model="todo.complete" :binary="true" />
+            <Checkbox v-model="todo.complete" class="checkbox" :binary="true" />
           </div>
         </template>
       </Card>
@@ -43,6 +43,12 @@ const emit = defineEmits(['deleteTodo'])
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.card {
+  color: var(--vt-c-text-dark-2);
+  background-color: var(--vt-c-divider-dark-1);
+  width: 25em;
 }
 
 .title {

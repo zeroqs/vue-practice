@@ -1,3 +1,4 @@
+import { defineStore } from 'pinia'
 import { computed, type Ref, ref } from 'vue'
 
 export interface Todo {
@@ -6,7 +7,7 @@ export interface Todo {
   complete: boolean
 }
 
-export const useTodos = () => {
+export const useTodoStore = defineStore('todos', () => {
   let id = 0
   const inputValue = ref('')
   const showCompleted = ref(false)
@@ -35,4 +36,4 @@ export const useTodos = () => {
     inputValue,
     showCompleted
   }
-}
+})
