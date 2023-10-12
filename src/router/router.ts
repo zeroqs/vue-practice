@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Home from '../views/HomeView.vue'
+import UserMessage from '@/components/UserMessage.vue'
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -17,7 +18,14 @@ const router = createRouter({
     {
       path: '/chat',
       name: 'chat',
-      component: () => import('../views/ChatView.vue')
+      component: () => import('../views/ChatView.vue'),
+      children: [
+        {
+          path: ':id',
+          name: 'UserMessage',
+          component: UserMessage
+        }
+      ]
     }
   ]
 })

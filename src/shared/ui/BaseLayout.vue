@@ -13,6 +13,7 @@
         </div>
       </slot>
     </header>
+    <slot name="default" />
     <main class="main">
       <slot name="content" />
     </main>

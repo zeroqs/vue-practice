@@ -1,23 +1,4 @@
 <script setup lang="ts"></script>
 <template>
-  <router-view v-slot="{ Component }">
-    <transition name="slide" mode="out-in">
-      <component :is="Component" :key="$route.path" />
-    </transition>
-  </router-view>
+  <router-view></router-view>
 </template>
-
-<style>
-.slide-enter-active,
-.slide-leave-active {
-  transition:
-    opacity 1s,
-    transform 1s;
-}
-
-.slide-enter-from,
-.slide-leave-to {
-  opacity: 0;
-  transform: translateX(-30%);
-}
-</style>
